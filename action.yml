@@ -1,0 +1,44 @@
+name: 'Vue to Github Pages'
+description: 'Build Vue and deploy it to Github Pages'
+inputs:
+  username:
+    description: 'Your username'
+    required: true
+  reponame:
+    description: 'Your reponame'
+    required: true
+  token:
+    description: 'Your Github token'
+    required: true
+  gitemail:
+    description: 'Your git commit email'
+    required: false
+    default: 'CI@example.com'
+  gitname:
+    description: 'Your git commit name'
+    required: false
+    default: 'CI'
+  gitmsg:
+    description: 'Your git commit message'
+    required: false
+    default: 'deploy'
+  cname:
+    description: 'Your custom domain'
+    required: false
+    default: 'none'
+runs:
+  using: "composite"
+  steps:
+      - name: Build Vue
+        run: |
+              npm ci
+              npm run build
+              cd dist
+              if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
+              git config --global user.email "${{ inputs.gitemail }}"
+              git config --global user.name "${{ inputs.gitname }}"
+              git init
+              git add -A
+              git commit -m '${{ inputs.gitmsg }}'
+              git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
+        shell: bash
