@@ -26,6 +26,8 @@ jobs:
         reponame: 'YourRepoName'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 ```
+4. Go to Settings -> Scroll down to GitHub Pages -> Select `gh-pages` as branch and `/` as directory 
+
 ## Options 🔧
 |   Name   |            Description           |     Default    | Required |
 |:--------:|:--------------------------------:|:--------------:|:--------:|
