@@ -1,5 +1,8 @@
 name: 'Vue to Github Pages'
-description: 'Build Vue and deploy it to Github Pages'
+branding:
+  icon: 'activity'  
+  color: 'blue'
+description: 'This Action will Build your Vue Project and deploy it to Github Pages'
 inputs:
   username:
     description: 'Your username'
