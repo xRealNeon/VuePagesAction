@@ -5,11 +5,15 @@ branding:
 description: 'This Action will Build your Vue Project and deploy it to Github Pages'
 inputs:
   username:
-    description: 'Your username'
+    description: 'Your username or org name'
     required: true
   reponame:
     description: 'Your reponame'
     required: true
+  path:
+    description: 'location of the code to be built and deployed'
+    required: false
+    default: 'none'
   token:
     description: 'Your Github token'
     required: true
@@ -34,6 +38,7 @@ runs:
   steps:
       - name: Build Vue
         run: |
+              cd ${{ inputs.path }} || true
               npm ci
               npm run build
               cd dist
