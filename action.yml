@@ -10,6 +10,10 @@ inputs:
   reponame:
     description: 'Your reponame'
     required: true
+  path:
+    description: 'location of the code to be built and deployed'
+    required: false
+    default: 'none'
   token:
     description: 'Your Github token'
     required: true
@@ -27,10 +31,6 @@ inputs:
     default: 'deploy'
   cname:
     description: 'Your custom domain'
-    required: false
-    default: 'none'
-  path:
-    description: 'location of the code to be built and deployed'
     required: false
     default: 'none'
 runs:
