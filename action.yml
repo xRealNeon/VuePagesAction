@@ -1,8 +1,5 @@
 name: 'Vue to Github Pages'
-branding:
-  icon: 'activity'  
-  color: 'blue'
-description: 'This Action will Build your Vue Project and deploy it to Github Pages'
+description: 'Build Vue and deploy it to Github Pages'
 inputs:
   username:
     description: 'Your username'
@@ -29,13 +26,17 @@ inputs:
     description: 'Your custom domain'
     required: false
     default: 'none'
+  useyarn:
+    description: 'Use yarn to build'
+    required: false
+    default: false
 runs:
   using: "composite"
   steps:
       - name: Build Vue
         run: |
-              npm ci
-              npm run build
+              if [ true ==  ${{ inputs.useyarn }} ]; then yarn install; else npm ci; fi
+              if [ true ==  ${{ inputs.useyarn }} ]; then yarn build; else npm run build; fi
               cd dist
               if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
               git config --global user.email "${{ inputs.gitemail }}"
