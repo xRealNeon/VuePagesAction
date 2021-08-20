@@ -38,3 +38,4 @@ jobs:
 |  gitname |          Git commit name         |       CI       |     ❌    |
 |  gitmsg  |        Git commit message        |     deploy     |     ❌    |
 |   cname  |           Custom domain          |        -       |     ❌    |
+|  useyarn |         Use yarn to build        |      false     |     ❌    |
