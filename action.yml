@@ -43,10 +43,11 @@ runs:
               cd dist
               ln -s index.html 404.html
               if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
+              git config --global init.defaultBranch main
               git config --global user.email "${{ inputs.gitemail }}"
               git config --global user.name "${{ inputs.gitname }}"
               git init
               git add -A
               git commit -m '${{ inputs.gitmsg }}'
-              git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
+              git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git main:gh-pages
         shell: bash
