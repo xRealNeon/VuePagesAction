@@ -13,30 +13,30 @@ inputs:
   token:
     description: 'Your Github token'
     required: true
-  gitemail:
-    description: 'Your git commit email'
-    required: false
-    default: 'CI@example.com'
-  gitname:
-    description: 'Your git commit name'
-    required: false
-    default: 'CI'
-  gitmsg:
-    description: 'Your git commit message'
-    required: false
-    default: 'deploy'
-  cname:
-    description: 'Your custom domain'
-    required: false
-    default: 'none'
-  useyarn:
-    description: 'Use yarn to build'
-    required: false
-    default: false
   branch:
     description: 'Default branch name'
     required: false
     default: 'main'
+  cname:
+    description: 'Your custom domain'
+    required: false
+    default: 'none'
+  gitemail:
+    description: 'Your git commit email'
+    required: false
+    default: 'CI@example.com'
+  gitmsg:
+    description: 'Your git commit message'
+    required: false
+    default: 'deploy'
+  gitname:
+    description: 'Your git commit name'
+    required: false
+    default: 'CI'
+  useyarn:
+    description: 'Use yarn to build'
+    required: false
+    default: false
 runs:
   using: "composite"
   steps:
