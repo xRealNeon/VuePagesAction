@@ -33,6 +33,10 @@ inputs:
     description: 'Use yarn to build'
     required: false
     default: false
+  branch:
+    description: 'Default branch name'
+    required: false
+    default: 'main'
 runs:
   using: "composite"
   steps:
@@ -43,7 +47,7 @@ runs:
               cd dist
               ln -s index.html 404.html
               if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
-              git config --global init.defaultBranch main
+              git config --global init.defaultBranch "${{ inputs.branch }}"
               git config --global user.email "${{ inputs.gitemail }}"
               git config --global user.name "${{ inputs.gitname }}"
               git init
