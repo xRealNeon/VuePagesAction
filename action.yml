@@ -13,22 +13,26 @@ inputs:
   token:
     description: 'Your Github token'
     required: true
-  gitemail:
-    description: 'Your git commit email'
+  branch:
+    description: 'Default branch name'
     required: false
-    default: 'CI@example.com'
-  gitname:
-    description: 'Your git commit name'
-    required: false
-    default: 'CI'
-  gitmsg:
-    description: 'Your git commit message'
-    required: false
-    default: 'deploy'
+    default: 'main'
   cname:
     description: 'Your custom domain'
     required: false
     default: 'none'
+  gitemail:
+    description: 'Your git commit email'
+    required: false
+    default: 'CI@example.com'
+  gitmsg:
+    description: 'Your git commit message'
+    required: false
+    default: 'deploy'
+  gitname:
+    description: 'Your git commit name'
+    required: false
+    default: 'CI'
   useyarn:
     description: 'Use yarn to build'
     required: false
@@ -43,10 +47,11 @@ runs:
               cd dist
               [ -f 404.html ] || ln -s index.html 404.html
               if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
+              git config --global init.defaultBranch "${{ inputs.branch }}"
               git config --global user.email "${{ inputs.gitemail }}"
               git config --global user.name "${{ inputs.gitname }}"
               git init
               git add -A
               git commit -m '${{ inputs.gitmsg }}'
-              git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
+              git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git ${{ inputs.branch }}:gh-pages
         shell: bash
