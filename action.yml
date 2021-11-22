@@ -33,13 +33,17 @@ inputs:
     description: 'Use yarn to build'
     required: false
     default: false
+  buildscript:
+    description: 'Your build script from package.json'
+    required: false
+    default: 'build'
 runs:
   using: "composite"
   steps:
       - name: Build Vue
         run: |
               if [ true ==  ${{ inputs.useyarn }} ]; then yarn install --frozen-lockfile; else npm ci; fi
-              if [ true ==  ${{ inputs.useyarn }} ]; then yarn build; else npm run build; fi
+              if [ true ==  ${{ inputs.useyarn }} ]; then yarn ${{ inputs.buildscript }}; else npm run ${{ inputs.buildscript }}; fi
               cd dist
               ln -s index.html 404.html
               if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
