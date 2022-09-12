@@ -42,11 +42,12 @@ jobs:
 ## Options 🔧
 |   Name   |            Description           |     Default    | Required |
 |:--------:|:--------------------------------:|:--------------:|:--------:|
-| username |           Your username          |        -       |     ✅    |
-| reponame |       Your repository name       |        -       |     ✅    |
-|   token  | Please leave this line unchanged |        -       |     ✅    |
-| gitemail |         Git commit email         | CI@example.com |     ❌    |
-|  gitname |          Git commit name         |       CI       |     ❌    |
-|  gitmsg  |        Git commit message        |     deploy     |     ❌    |
-|   cname  |           Custom domain          |        -       |     ❌    |
-|  useyarn |         Use yarn to build        |      false     |     ❌    |
+| username |           Your username          |        -       |    ✅    |
+| reponame |       Your repository name       |        -       |    ✅    |
+|   token  | Please leave this line unchanged |        -       |    ✅    |
+|  branch  |        Default branch name       |      main      |    ❌    |
+|   cname  |           Custom domain          |        -       |    ❌    |
+| gitemail |         Git commit email         | CI@example.com |    ❌    |
+|  gitmsg  |        Git commit message        |     deploy     |    ❌    |
+|  gitname |          Git commit name         |       CI       |    ❌    |
+|  useyarn |         Use yarn to build        |      false     |    ❌    |
