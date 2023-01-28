@@ -38,7 +38,7 @@ runs:
   steps:
       - name: Build Vue MohaElder
         run: |
-              if [ true ==  ${{ inputs.useyarn }} ]; then yarn install --frozen-lockfile; else npm ci; fi
+              if [ true ==  ${{ inputs.useyarn }} ]; then yarn install --frozen-lockfile; else npm ci --force; fi
               if [ true ==  ${{ inputs.useyarn }} ]; then yarn build; else npm run build; fi
               cd dist
               ln -s index.html 404.html
